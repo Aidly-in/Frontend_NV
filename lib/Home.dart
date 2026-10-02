@@ -756,7 +756,7 @@ class BottomNavItem extends StatelessWidget {
 /// ================= SOCIAL =================
 class SocialCircle extends StatelessWidget {
 
-  final IconData icon;
+  final dynamic icon;
   final double screenWidth;
 
   const SocialCircle({
@@ -774,11 +774,17 @@ class SocialCircle extends StatelessWidget {
         color: Color(0xFF82CFC6),
         shape: BoxShape.circle,
       ),
-      child: Icon(
-        icon,
-        color: Colors.white,
-        size: screenWidth * 0.05,
-      ),
+      child: icon is IconData
+          ? Icon(
+              icon,
+              color: Colors.white,
+              size: screenWidth * 0.05,
+            )
+          : FaIcon(
+              icon,
+              color: Colors.white,
+              size: screenWidth * 0.05,
+            ),
     );
   }
 }

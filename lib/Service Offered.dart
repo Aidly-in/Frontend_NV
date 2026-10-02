@@ -135,7 +135,7 @@ class _MyServicesOfferedPage extends State<ServicePage> {
                   _serviceButton(
                     context: context,
                     title: "Ambulance Booking",
-                    icon: FontAwesomeIcons.ambulance,
+                    icon: FontAwesomeIcons.truckMedical,
                     color: const Color(0xFFD8F3DC),
                     // PASSING RESPONSIVE BUTTON HEIGHT TO REUSABLE WIDGET
                     buttonHeight: buttonHeight,
@@ -257,7 +257,7 @@ class _MyServicesOfferedPage extends State<ServicePage> {
   Widget _serviceButton({
     required BuildContext context,
     required String title,
-    required IconData icon,
+    required dynamic icon,
     required Color color,
     required VoidCallback onTap,
     // NEW REQUIRED PARAMETER TO RECEIVE RESPONSIVE HEIGHT FROM LAYOUT BUILDER
@@ -298,11 +298,17 @@ class _MyServicesOfferedPage extends State<ServicePage> {
                 ),
               ),
               SizedBox(width: 10.w),
-              Icon(
-                icon,
-                color: Colors.black,
-                size: 22.sp,
-              ),
+              icon is IconData
+                  ? Icon(
+                      icon,
+                      color: Colors.black,
+                      size: 22.sp,
+                    )
+                  : FaIcon(
+                      icon,
+                      color: Colors.black,
+                      size: 22.sp,
+                    ),
             ],
           ),
         ),
